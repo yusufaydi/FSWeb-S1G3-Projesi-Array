@@ -36,7 +36,7 @@ const orijinalTatlar = [
    "Fıstık Ezmesi",
    "Profiterol",
   "Madlen Çikolata"
- ]
+ ];
 
  const mevsimlikTatlar = [
  "Pekan",
@@ -50,7 +50,7 @@ const orijinalTatlar = [
  "Kaymaklı Biskuvi",
  "Beyaz Çikolata",
  "Mango"
- ]
+ ];
 
  const bolgeselTatlar = [
  "Kaymak",
@@ -65,7 +65,7 @@ const orijinalTatlar = [
  "Kuru üzüm",
  "Peynir",
  "Karamel"
- ]
+ ];
 
 /* Görev 1: Diziyi kopyalama!
 Orijinal tatların bulunduğu toplam 25 aromanın olduğu bir dizimiz var (yukarıya bakın). Bu görevde, bu dizi'ye veri yazma ve bu diziden veri okuma işlemleri yapacağız.
@@ -226,8 +226,8 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 
 
 function ismeGoreFiltrele(arr,str){
-
    let arr_end = [];
+
   for (let i = 0; i < arr.length; i++) {
     if(arr[i].includes(str)){
       arr_end.push(arr[i]);
@@ -252,9 +252,24 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+function ortalamaKelimeSayisi(arr){
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+     if (arr.toString(arr.includes(" "))) {
+      count ++;
+   }
+   else {
+     console.log("There is only just one sentence!");
+   }
+  }
+  return count;
 }
+
+const oneArr = ["One"];
+
+console.log("Lets see how many sentence we have here",ortalamaKelimeSayisi(orijinalTatlar));
+
+console.log("Lets see how many sentence we have here",ortalamaKelimeSayisi(oneArr));
 
 
 /* ALIŞTIRMA 2:
@@ -270,11 +285,31 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 */
 
 
-function rastgeleTatlar(/*kod buraya*/){
-  /*kod buraya*/
-}
+function rastgeleTatlar(arr1,arr2,arr3,arr4){
 
+  const randomTatlar = [];
 
+  const newFlavor = [...arr1, ...arr2, ...arr3, ...arr4];
+
+   for (let i = 0; i < 25; i++) {
+    let random = Math.floor(Math.random * newFlavor.length);
+    let rastgeleTat = newFlavor[random];
+    randomTatlar.push(rastgeleTat);
+      if(randomTatlar.includes(rastgeleTat)) {
+        i--;
+      } else {
+        randomTatlar.push(rastgeleTat);
+      }
+
+   } 
+
+   return randomTatlar;
+
+ }
+
+ const result = rastgeleTatlar(orijinalTatlar,yeniTatlar,mevsimlikTatlar,bolgeselTatlar);
+
+console.log("Lets see the results => ",result,result.length);
 
 
 /* Lütfen bu satırın altındaki hiçbir şeyi değiştirmeyin */
