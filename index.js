@@ -29,6 +29,44 @@ const orijinalTatlar = [
   "Vanilya",
 ];
 
+// NEW DATA ARRAYS FOR STRETCH 2 ⬇️
+ const yeniTatlar = [
+  "Badem",
+   "Ballı Badem",
+   "Fıstık Ezmesi",
+   "Profiterol",
+  "Madlen Çikolata"
+ ]
+
+ const mevsimlikTatlar = [
+ "Pekan",
+ "Kaju",
+ "Çikolatalı Mousse",
+ "Fransız Vanilyası",
+ "Yumurta",
+ "Alman çikolatası",
+ "Kek üzerine krema",
+ "Hindistan Cevizi",
+ "Kaymaklı Biskuvi",
+ "Beyaz Çikolata",
+ "Mango"
+ ]
+
+ const bolgeselTatlar = [
+ "Kaymak",
+ "Karpuz",
+ "Karadut",
+ "Turunç",
+ "Portakal",
+ "Yogurt",
+ "Krem Peynir",
+ "Kakao",
+ "Karamel macchiato",
+ "Kuru üzüm",
+ "Peynir",
+ "Karamel"
+ ]
+
 /* Görev 1: Diziyi kopyalama!
 Orijinal tatların bulunduğu toplam 25 aromanın olduğu bir dizimiz var (yukarıya bakın). Bu görevde, bu dizi'ye veri yazma ve bu diziden veri okuma işlemleri yapacağız.
 Tüm bu değişiklikleri yaparken, gerçek, orijinal 25 lezzetin listesini kaybetmek istemiyoruz. Bu yüzden orijinal diziyi kopyalamamız gerekmektedir!
@@ -38,12 +76,16 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
    1. parametre olarak bir dizi alın - işlev çağrıldığında orijinalTatlar'i argüman olarak ileteceksiniz.
    2. Alınan dizinin bir kopyasını döndür
 */
-
-
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+let newArr = [];
+function kopyala(arr){
+ // let diziCopy = [...orijinalTatlar]; sadece bu kod ilede kopyalayabiliriz.
+  for (let i = 0; i < arr.length; i+=1) {
+    newArr[i] = arr[i];
+  }
+  return newArr;
 }
 
+kopyala(orijinalTatlar);
 
 /* Görev 2:
 Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları kabul etmelidir:
@@ -55,10 +97,17 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 Örneğin: dizi25Cesit(orijinalTatlar) kodunuz düzgün çalışıyorsa true değerini döndürür.
 */
 
-
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(arr){
+ 
+  if(arr.length === 25) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
+
+dizi25Cesitmi(orijinalTatlar);
 
 
 /* Görev 3:
@@ -74,9 +123,12 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+
+function cesitEkle(arr,value){
+  arr.unshift(value);
+  return arr;
 }
+
 
 
 /* Cörev 4:
@@ -92,9 +144,12 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(arr){
+  arr.pop();
+  return arr;
 }
+
+sonCesitiKaldir(orijinalTatlar);
 
 
 /* Görev 5:
@@ -108,8 +163,8 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(arr,x){
+  return arr[x];
 }
 
 
@@ -128,10 +183,26 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
-}
+function ismeGoreCesitCikar(arr,flavor){
+  // let arr_end = [];
+  // for (let i = 0; i < arr.length; i++) {
+  //   if(arr[i] !== flavor){
+  //     arr_end.push(arr[i]);
+  //   }
+  // }
+  // return arr_end;
+  
+  const index = arr.indexOf(flavor);
+  
+  if(index < 0) {
+    console.log("this flavor isnt existed!");
+  } else {
+    arr.splice(index,1);
+  }
 
+  return arr;
+
+}
 
 /* Görev 7:
 
@@ -154,11 +225,20 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(arr,str){
+
+   let arr_end = [];
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i].includes(str)){
+      arr_end.push(arr[i]);
+    }
+    
+  }
+  return arr_end;
+
 }
 
-
+ismeGoreFiltrele(orijinalTatlar,"Muz");
 
 /* ALIŞTIRMA */
 
@@ -194,43 +274,7 @@ function rastgeleTatlar(/*kod buraya*/){
   /*kod buraya*/
 }
 
-// NEW DATA ARRAYS FOR STRETCH 2 ⬇️
-// const yeniTatlar = [
-//   "Badem",
-//   "Ballı Badem",
-//   "Fıstık Ezmesi",
-//   "Profiterol",
-//   "Madlen Çikolata"
-// ]
 
-// const mevsimlikTatlar = [
-// "Pekan",
-// "Kaju",
-// "Çikolatalı Mousse",
-// "Fransız Vanilyası",
-// "Yumurta",
-// "Alman çikolatası",
-// "Kek üzerine krema",
-// "Hindistan Cevizi",
-// "Kaymaklı Biskuvi",
-// "Beyaz Çikolata",
-// "Mango"
-// ]
-
-// const bolgeselTatlar = [
-// "Kaymak",
-// "Karpuz",
-// "Karadut",
-// "Turunç",
-// "Portakal",
-// "Yogurt",
-// "Krem Peynir",
-// "Kakao",
-// "Karamel macchiato",
-// "Kuru üzüm",
-// "Peynir",
-// "Karamel"
-// ]
 
 
 /* Lütfen bu satırın altındaki hiçbir şeyi değiştirmeyin */
