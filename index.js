@@ -292,16 +292,28 @@ function rastgeleTatlar(arr1,arr2,arr3,arr4){
   const newFlavor = [...arr1, ...arr2, ...arr3, ...arr4];
 
    for (let i = 0; i < 25; i++) {
-    let random = Math.floor(Math.random * newFlavor.length);
+    let random = Math.floor(Math.random()* newFlavor.length);
     let rastgeleTat = newFlavor[random];
-    randomTatlar.push(rastgeleTat);
       if(randomTatlar.includes(rastgeleTat)) {
         i--;
       } else {
         randomTatlar.push(rastgeleTat);
       }
 
-   } 
+   }
+   
+   /*
+   while(randomTatlar.length < 25){
+    let random = Math.floor(Math.random()*newFlavor.length);
+    let rastgeleTat = newFlavor[random];
+    
+    if(randomTatlar.includes(rastgeleTat))  {
+
+    } else {
+      randomTatlar.push(rastgeleTat);
+    }
+   }
+   */
 
    return randomTatlar;
 
